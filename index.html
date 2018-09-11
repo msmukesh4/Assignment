@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+      <meta name="mobile-web-app-capable" content="yes">
+      <title>Assignment</title>
+    <link rel="stylesheet" href="./main.css"/>
+  </head>
+
+  <body>
+    <div id="container">
+
+      <div id="config">
+        <label>My Id &nbsp:&nbsp </label> <input type="text" name="my_id" id="myId" placeholder="My Id"><br>
+        <label>Peer Id : </label><input type="text" name="peer_id" id="peerId" placeholder="Peer Id"><br>
+        <button id="connect">Connect</button>
+        <button id="disconnect" hidden>Disconnect</button><br>
+      </div>
+      <div id="videoView" hidden>
+        <video id="local_video" height="300px" width="300px" playsinline autoplay muted></video>
+        <video id="remote_video" height="300px" width="300px" playsinline autoplay></video>
+        <div id="callActions" hidden>
+            <button id="startCall">Start Call</button>
+            <button hidden id="endCall">End Call</button>
+        </div>
+        <br>
+        <div class="editor_container" hidden>
+          <p><label><h3>RTC Editor</h3></label></p>
+          <p><label id="peerTyping" hidden></label></p>
+          <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
+          <div ng-app="myApp">
+            <div ng-controller="AppCtrl" align="center">
+              <textarea oninput="myTextChanged()" id="myTextArea" ng-model="loremIpsum"  placeholder="Type something...">
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./jQuery.min.js"></script>
+    <script src="./adapter.js"></script>
+    <script src="./sc.websocket.js"></script>
+    <script src="./socket.io.js"></script>
+    <script src="./newmain.js"></script>
+
+  </body>
+</html>

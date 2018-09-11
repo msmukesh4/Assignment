@@ -1,0 +1,232 @@
+
+.hidden {
+  display: none;
+}
+
+a {
+  color: #4285F4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3B78E7;
+  text-decoration: underline;
+}
+
+#room-link a {
+  white-space: nowrap;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: 'Roboto', 'Open Sans', 'Lucida Grande', sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin: 16px 16px 16px 16px;
+}
+
+#remote-canvas {
+  display: none;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+div.warning {
+  background-color: #a80202;
+  color: black;
+  font-weight: 400;
+  opacity: .9;
+}
+
+#container {
+  height: 100%;
+  position: absolute;
+}
+
+#info-div {
+  z-index: 3;
+}
+
+#room-link {
+  margin: 0 0 29px 0;
+}
+
+#status {
+  z-index: 4;
+}
+
+#videos {
+  font-size: 0; /* to fix whitespace/scrollbars problem */
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  transition: all 1s;
+  width: 100%;
+}
+
+#videos.active {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+label {
+  margin: 0 10px 0 0;
+}
+
+#local-video {
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;  /* no letterboxing */
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+  transition: opacity 1s;
+  width: 100%;
+}
+
+#mini-video {
+  border: 1px solid gray;
+  bottom: 20px;
+  left: 20px;
+  /* video div is flipped horizontally when active*/
+  max-height: 17%;
+  max-width: 17%;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s;
+}
+
+#mini-video.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+#remote-video {
+  display: block;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;  /* no letterboxing */
+  opacity: 0;
+  position: absolute;
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  transition: opacity 1s;
+  width: 100%;
+}
+
+#remote-video.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+button {
+  background-color: #4285F4;
+  border: none;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,.5);
+  -moz-box-shadow: 1px 1px 5px 0 rgba(0,0,0,.5);
+  box-shadow: 1px 1px 5px 0 rgba(0,0,0,.5);
+  color: white;
+  font-size: 0.8em;
+  height: 2.75em;
+  margin: 10px 5px 20px 5px;
+  padding: 0.5em 0.7em 0.5em 0.7em;
+  width: 8em;
+}
+
+button:active {
+  background-color: #3367D6;
+}
+
+button:hover {
+  background-color: #3B78E7;
+}
+
+button:focus {
+  -webkit-box-shadow: 0 10px 15px 0 rgba(0,0,0,.5);
+  -moz-box-shadow: 0 10px 15px 0 rgba(0,0,0,.5);
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,.5);
+  outline: none;
+}
+
+button[disabled] {
+  background-color: rgb(30, 30, 30);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgb(76, 76, 76);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 5px 5px 5px 5px;
+  margin: 10px 5px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1.15em;
+  font-family:'Ubuntu', Helvetica, Arial, sans-serif;
+  border-radius:4px;
+  border: solid 1px #fff
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+}
+
+input[type="text"]:focus {
+  border: solid 2px #4285F4;
+  outline: none;
+}
+
+input[type="text"].invalid {
+  border-bottom: solid 2px #F44336;
+}
+
+label.error-label {
+  color: #F44336;
+  font-size: .85em;
+  font-weight: 200;
+  margin: 0;
+}
+
+textarea {
+  height:200px;
+  max-width:600px;
+  color:#999;
+  font-weight:400;
+  font-size:18px;
+  font-family:'Ubuntu', Helvetica, Arial, sans-serif;
+  width:100%;
+  background:#fff;
+  border-radius:4px;
+  line-height:2em;
+  border:none;
+  box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+  padding:30px;
+  -webkit-transition: height 2s ease;
+  -moz-transition: height 2s ease;
+  -ms-transition: height 2s ease;
+  -o-transition: height 2s ease;
+  transition: height 2s ease;
+}
+
+* {
+  -webkit-font-smoothing:antialiased !important;
+}
