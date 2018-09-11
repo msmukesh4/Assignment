@@ -1,4 +1,4 @@
-# This a RTC Text Editor and Video call App
+# RTC Text Editor and Video call App
 
 # Steps to run the App
   - clone the project
