@@ -6,6 +6,7 @@ const ANSWER = "answer";
 const CALL_ENDED = "call_end";
 const EDITOR_TYPING = "user_typing";
 const EDITOR_TEXT = "editor_text";
+const EDITOR_ACTION = "editor_action";
 
 const startCall = document.getElementById('startCall');
 const endCall = document.getElementById('endCall');
@@ -88,6 +89,29 @@ $("#config #disconnect").on('click', function(){
   }
 });
 
+$("#editorActions #lock").on('click', function(){
+  if (signaling) {
+    $(".editor_container #editorLocked").show();
+    $(".editor_container #editorLocked").text("you locked the editor");
+    console.log("locked");
+    myTextArea.disabled = true;
+    $("#editorActions #lock").hide();
+    $("#editorActions #unlock").show();
+    signaling.send(peerId, { "event" : EDITOR_ACTION, "data" : true });
+  }
+});
+
+$("#editorActions #unlock").on('click', function(){
+  if (signaling) {
+    console.log("unlock");
+    $(".editor_container #editorLocked").text("you unlocked the editor");
+    myTextArea.disabled = false;
+    $("#editorActions #unlock").hide();
+    $("#editorActions #lock").show();
+    signaling.send(peerId, { "event" : EDITOR_ACTION, "data" : false });
+  }
+});
+
 function initialize() {
   $("#callActions").show();
   myTextArea.value = "";
@@ -125,6 +149,10 @@ function registerEvents(data){
         console.log("editor text");
         onEditorTextChanged(data.data);
         break;
+    case EDITOR_ACTION:
+        console.log("editor action");
+        onEditorAction(data.data);
+        break;
     default:
         console.log("received : "+data.event);
   }
@@ -138,7 +166,21 @@ function onUserTyping(typing){
     }else {
       $(".editor_container #peerTyping").hide();
     }
+}
 
+function onEditorAction(locked){
+    console.log("user "+peerId+" locked : "+locked);
+    myTextArea.disabled = locked;
+    if (locked) {
+      $(".editor_container #editorLocked").show();
+      $(".editor_container #editorLocked").text(peerId+" locked the editor");
+      $("#editorActions #lock").hide();
+      $("#editorActions #unlock").show();
+    } else {
+      $(".editor_container #editorLocked").text(peerId+" unlocked the editor");
+      $("#editorActions #unlock").hide();
+      $("#editorActions #lock").show();
+    }
 }
 
 function onEditorTextChanged(data){

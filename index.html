@@ -29,13 +29,18 @@
         <br>
         <div class="editor_container" hidden>
           <p><label><h3>RTC Editor</h3></label></p>
-          <p><label id="peerTyping" hidden></label></p>
+          <label id="peerTyping" hidden></label><br>
+          <label id="editorLocked" hidden></label>
           <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
           <div ng-app="myApp">
             <div ng-controller="AppCtrl" align="center">
               <textarea oninput="myTextChanged()" id="myTextArea" ng-model="loremIpsum"  placeholder="Type something...">
               </textarea>
             </div>
+          </div>
+          <div id="editorActions">
+              <button id="lock">Lock</button>
+              <button hidden id="unlock">Unlock</button>
           </div>
         </div>
       </div>
